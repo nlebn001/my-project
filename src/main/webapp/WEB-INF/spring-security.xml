@@ -1,0 +1,83 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <sec:http auto-config="true" use-expressions="true">
+        <sec:intercept-url pattern="/auth" access="permitAll"/>
+        <sec:intercept-url pattern="/session" access="permitAll"/>
+        <sec:intercept-url pattern="/resources/**" access="permitAll"/>
+        <sec:intercept-url pattern="/skins/**" access="permitAll"/>
+        <sec:intercept-url pattern="/help/list-headers" access="permitAll"/>
+        <sec:intercept-url pattern="/help/list-bodies" access="permitAll"/>
+        <sec:intercept-url pattern="/help/get-header" access="permitAll"/>
+        <sec:intercept-url pattern="/help/get-body" access="permitAll"/>
+        <sec:intercept-url pattern="/help/get-body-by-name-and-header" access="permitAll"/>
+        <sec:intercept-url pattern="/help_resources/**" access="permitAll"/>
+        <sec:intercept-url pattern="/tinymce/**" access="permitAll"/>
+        <sec:intercept-url pattern="/favicon.ico" access="permitAll"/>
+        <sec:intercept-url pattern="/user/list" access="permitAll"/>
+        <sec:intercept-url pattern="/downloads/res-open/**" access="permitAll"/>
+
+        <!--authentication-failure-url="/login-error"-->
+        <sec:custom-filter ref="requestContextFilter" before="FORM_LOGIN_FILTER"/>
+        <!--sec:form-login
+                login-page="/auth"
+                default-target-url="/"
+                authentication-success-handler-ref="authSuccessHandler"
+                authentication-failure-handler-ref="authFailureHandler"
+                username-parameter="username"
+                password-parameter="password"
+                authentication-details-source-ref="authDetailsSource"/!-->
+        <!--sec:logout invalidate-session="true" success-handler-ref="authLogoutHandler"/!-->
+        <sec:session-management session-authentication-strategy-ref="sas" invalid-session-url="/session"/>
+        <sec:csrf disabled="true"/>
+        <!--todo remove next line on production with corsSource and corsConf beans | need for CORS requests-->
+        <sec:cors configuration-source-ref="corsSource"/>
+        <sec:intercept-url pattern="/**" access="isAuthenticated()"/>
+    </sec:http>
+
+    <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider ref="authProvider"/>
+    </sec:authentication-manager>
+
+    <bean id="requestContextFilter" class="org.springframework.web.filter.RequestContextFilter"/>
+
+    <bean id="corsSource" class="org.springframework.web.cors.UrlBasedCorsConfigurationSource">
+        <property name="corsConfigurations">
+            <map>
+                <entry key="/**" value-ref="corsConf" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="corsConf" class="org.springframework.web.cors.CorsConfiguration">
+        <property name="allowedOrigins" value="*"/>
+        <property name="allowedMethods" value="*"/>
+        <property name="allowCredentials" value="true"/>
+        <property name="allowedHeaders" value="*"/>
+    </bean>
+
+    <bean id="sas" class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <constructor-arg>
+            <list>
+            <bean class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+                <constructor-arg ref="sessionRegistry"/>
+                <property name="maximumSessions" value="-1" />
+                <property name="exceptionIfMaximumExceeded" value="true" />
+            </bean>
+            <bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+            </bean>
+            <bean class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                <constructor-arg ref="sessionRegistry"/>
+            </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+</beans>
