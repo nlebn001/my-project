@@ -17,19 +17,13 @@ public class RandomOrganizationCreator {
         Set<CaOrganization> orgs = new HashSet<>();
 
         for(int i = 0 ; i< (int) (10 * Math.random()+1); i++) {
-
             users = new ArrayList<User>();
-
             for(int j = 0; j<(int) (10 * Math.random()+1); j++) {
-
                 user = new User();
                 users.add(user);
-
             }
             orgs.add(new CaOrganization(users));
-
         }
-
         return orgs;
     }
 

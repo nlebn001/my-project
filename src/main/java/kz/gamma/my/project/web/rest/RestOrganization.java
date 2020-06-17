@@ -24,31 +24,19 @@ public class RestOrganization extends BaseRest {
 
     @RequestMapping(value = "/list", method = GET)
     public void list(HttpServletResponse response, @RequestParam(value = "specUser", required = false) Boolean specUser) {
-        // set default value for specUser. If not specified then set to false
-        // and hence return just users
-        //User curUser = getUser();
-        //List<Map<String, Object>> userDetails = userService.userDetails();
 
         User user = null;
-        ArrayList<User> users = null ;
+        ArrayList<User> users = null;
         Set<CaOrganization> orgs = new HashSet<>();
-
-        for(int i = 0 ; i< (int) (10 * Math.random()+1); i++) {
-
+        for (int i = 0; i < (int) (10 * Math.random() + 1); i++) {
             users = new ArrayList<User>();
-
-            for(int j = 0; j<(int) (10 * Math.random()+1); j++) {
-
+            for (int j = 0; j < (int) (10 * Math.random() + 1); j++) {
                 user = new User();
                 users.add(user);
-
             }
             orgs.add(new CaOrganization(users));
-
         }
-
         returnResponse(response, new DefaultResponse(orgs.toString()));      // {"data":"Hello, I\u0027m USER","timestamp":1591448151696}
-
     }
 
 

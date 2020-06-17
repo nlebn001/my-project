@@ -10,7 +10,6 @@ import java.util.Set;
 // TODO: 15.06.2020  tester 
 public class ThreadCreator extends Thread{
 
-
     public ThreadCreator(String name){
         super(name);
     }
@@ -22,27 +21,18 @@ public class ThreadCreator extends Thread{
         Set<CaOrganization> orgs = new HashSet<>();
 
         for(int i = 0 ; i< (int) (10 * Math.random()+1); i++) {
-
             users = new ArrayList<User>();
-
             for(int j = 0; j<(int) (10 * Math.random()+1); j++) {
-
                 user = new User();
                 users.add(user);
-
             }
             orgs.add(new CaOrganization(users));
-
         }
-
         return orgs;
     }
 
-
     public void run() {
-
        Set<CaOrganization> orgs = randomCreate();
-
     }
 
 }

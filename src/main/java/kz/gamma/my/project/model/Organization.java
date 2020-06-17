@@ -1,7 +1,6 @@
 package kz.gamma.my.project.model;
 
 
-
 import com.sun.org.apache.xpath.internal.operations.Or;
 import kz.gamma.my.project.service.AllRandomMethods;
 
@@ -19,7 +18,6 @@ public class Organization {
     public boolean ieMark;
     public String orgName;
     public String orgAddress;
-
     public String bin;
     public String vatin;            // ID NDS
     public String stateRegCertNum;
@@ -30,23 +28,21 @@ public class Organization {
     public String phoneNumber;
 
 
-
-    public Organization(){
+    public Organization() {
         this.id = AllRandomMethods.makeRandomLong(8);
-        this.caOrganizationId= AllRandomMethods.makeRandomLong(8);
+        this.caOrganizationId = AllRandomMethods.makeRandomLong(8);
         this.isNotResident = AllRandomMethods.makeRandomBoolean();
-        this.ieMark= AllRandomMethods.makeRandomBoolean();
+        this.ieMark = AllRandomMethods.makeRandomBoolean();
         this.orgName = AllRandomMethods.makeRandomString(8);
-        this.orgAddress= AllRandomMethods.makeRandomString(8);
-
-        this.bin= AllRandomMethods.makeRandomString(8);
-        this.vatin= AllRandomMethods.makeRandomString(8);            // ID NDS
-        this.stateRegCertNum= AllRandomMethods.makeRandomString(8);
+        this.orgAddress = AllRandomMethods.makeRandomString(8);
+        this.bin = AllRandomMethods.makeRandomString(8);
+        this.vatin = AllRandomMethods.makeRandomString(8);
+        this.stateRegCertNum = AllRandomMethods.makeRandomString(8);
         this.issueDate = AllRandomMethods.makeRandomLocalDate();
-        this.idIssuer= AllRandomMethods.makeRandomLong(8);
-        this.firstHeadFullName= AllRandomMethods.makeRandomString(8);
-        this.firstHeadRole= AllRandomMethods.makeRandomString(8);
-        this.phoneNumber= AllRandomMethods.makeRandomString(8);
+        this.idIssuer = AllRandomMethods.makeRandomLong(8);
+        this.firstHeadFullName = AllRandomMethods.makeRandomString(8);
+        this.firstHeadRole = AllRandomMethods.makeRandomString(8);
+        this.phoneNumber = AllRandomMethods.makeRandomString(8);
     }
 
     public Long getId() {

@@ -10,10 +10,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 
-// 6 - System name
-// 11 - oblast
-//
-
 public class UserInfo {
 
     public Long id;
@@ -47,53 +43,40 @@ public class UserInfo {
 
 
     public UserInfo() {
-
         this.id = AllRandomMethods.makeRandomLong(8);
-        this.userId= AllRandomMethods.makeRandomLong(8);
-        this.editorUserId= AllRandomMethods.makeRandomLong(8);
-
-        this.firstName = AllRandomMethods.makeRandomString(8);        //4
-        this.middleName= AllRandomMethods.makeRandomString(8);      //5
-
-        this.lastName= AllRandomMethods.makeRandomString(8);         //3
-        this.birthday = AllRandomMethods.makeRandomLocalDate();      // 7
-        this.address= AllRandomMethods.makeRandomString(8);          //15
-
-
-        this.email= AllRandomMethods.makeRandomString(8);             //16
-        this.cn= AllRandomMethods.makeRandomString(8);
-        this.isNotResident = AllRandomMethods.makeRandomBoolean();       // 1
-        this.resCountryId= AllRandomMethods.makeRandomLong(8);
-
-        this.iin= AllRandomMethods.makeRandomString(8);                  // 2
-        this.idNumber= AllRandomMethods.makeRandomString(8);             // 8
-        this.idIssueDate = AllRandomMethods.makeRandomLocalDate();       // 10
-        this.idIssuer= AllRandomMethods.makeRandomLong(8);               //9
-        this.cityId= AllRandomMethods.makeRandomLong(8);                 // 12
-        this.phone= AllRandomMethods.makeRandomString(8);                // 14
-
-        this.phoneMobile= AllRandomMethods.makeRandomString(8);
-        this.bankId= AllRandomMethods.makeRandomLong(8);
-        this.account= AllRandomMethods.makeRandomString(8);
+        this.userId = AllRandomMethods.makeRandomLong(8);
+        this.editorUserId = AllRandomMethods.makeRandomLong(8);
+        this.firstName = AllRandomMethods.makeRandomString(8);
+        this.middleName = AllRandomMethods.makeRandomString(8);
+        this.lastName = AllRandomMethods.makeRandomString(8);
+        this.birthday = AllRandomMethods.makeRandomLocalDate();
+        this.address = AllRandomMethods.makeRandomString(8);
+        this.email = AllRandomMethods.makeRandomString(8);
+        this.cn = AllRandomMethods.makeRandomString(8);
+        this.isNotResident = AllRandomMethods.makeRandomBoolean();
+        this.resCountryId = AllRandomMethods.makeRandomLong(8);
+        this.iin = AllRandomMethods.makeRandomString(8);
+        this.idNumber = AllRandomMethods.makeRandomString(8);
+        this.idIssueDate = AllRandomMethods.makeRandomLocalDate();
+        this.idIssuer = AllRandomMethods.makeRandomLong(8);
+        this.cityId = AllRandomMethods.makeRandomLong(8);
+        this.phone = AllRandomMethods.makeRandomString(8);
+        this.phoneMobile = AllRandomMethods.makeRandomString(8);
+        this.bankId = AllRandomMethods.makeRandomLong(8);
+        this.account = AllRandomMethods.makeRandomString(8);
         this.created = AllRandomMethods.makeRandomDate();
     }
 
     public Long getId() {
         return id;
     }
-
-    public Long getUserId() {
-        return userId;
-    }
-
+    public Long getUserId() {return userId;}
     public String getFirstName() {
         return firstName;
     }
-
     public String getMiddleName() {
         return middleName;
     }
-
     public String getLastName() {
         return lastName;
     }

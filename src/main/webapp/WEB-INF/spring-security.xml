@@ -25,15 +25,15 @@
 
         <!--authentication-failure-url="/login-error"-->
         <sec:custom-filter ref="requestContextFilter" before="FORM_LOGIN_FILTER"/>
-        <!--sec:form-login
+        <sec:form-login
                 login-page="/auth"
                 default-target-url="/"
                 authentication-success-handler-ref="authSuccessHandler"
                 authentication-failure-handler-ref="authFailureHandler"
                 username-parameter="username"
                 password-parameter="password"
-                authentication-details-source-ref="authDetailsSource"/!-->
-        <!--sec:logout invalidate-session="true" success-handler-ref="authLogoutHandler"/!-->
+                authentication-details-source-ref="authDetailsSource"/>
+<!--        <sec:logout invalidate-session="true" success-handler-ref="authLogoutHandler"/>-->
         <sec:session-management session-authentication-strategy-ref="sas" invalid-session-url="/session"/>
         <sec:csrf disabled="true"/>
         <!--todo remove next line on production with corsSource and corsConf beans | need for CORS requests-->

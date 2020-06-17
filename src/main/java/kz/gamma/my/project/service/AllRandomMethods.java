@@ -76,7 +76,6 @@ public class AllRandomMethods {
 
     //RANDOM int START
     public static int makeRandomInt(int num) {
-
         String number = "";
         String numbers = "1234567890";
         for (int i = 0; i < num; i++) {
@@ -102,42 +101,23 @@ public class AllRandomMethods {
         int minDay = (int) LocalDate.of(2000, 1, 1).toEpochDay();
         int maxDay = (int) LocalDate.of(2020, 1, 1).toEpochDay();
         long randomDay = minDay + random.nextInt(maxDay - minDay);
-
         LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-
         Date date = Date.from(randomDate.atStartOfDay(defaultZoneId).toInstant());
-
         return date;
-
     }
 
     //END
 
     //RANDOM LocalDate START
-
     public static LocalDate makeRandomLocalDate() {
         Random random = new Random();
         int minDay = (int) LocalDate.of(2000, 1, 1).toEpochDay();
         int maxDay = (int) LocalDate.of(2020, 1, 1).toEpochDay();
         long randomDay = minDay + random.nextInt(maxDay - minDay);
-
         LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-
         return randomDate;
-
     }
-
     //END
-
-
-
-
-
-
-
-
-
-
 
 
 //    //RANDOM ORGANIZATION NAME START
@@ -172,12 +152,6 @@ public class AllRandomMethods {
 //        return lastName;
 //    }
 //    //RANDOM FULL NAME END
-
-
-
-
-
-
 
 
 }

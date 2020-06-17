@@ -23,7 +23,6 @@ public class MainController {
     }
 
 
-
     @RequestMapping(value = "auth", method = RequestMethod.GET)
     public String login() {
         return "/pages/login.html";

@@ -46,7 +46,7 @@ public class User {
     /* authentication step */
     public int authStep;
 
-    public User(){
+    public User() {
 
         this.id = AllRandomMethods.makeRandomLong(8);
         this.name = AllRandomMethods.makeRandomString(8);
@@ -57,14 +57,14 @@ public class User {
         this.dn = AllRandomMethods.makeRandomString(8);
         this.oldDn = AllRandomMethods.makeRandomString(8);
         this.organizationId = AllRandomMethods.makeRandomLong(8);
-        this.caOrganizationId=AllRandomMethods.makeRandomLong(8);
+        this.caOrganizationId = AllRandomMethods.makeRandomLong(8);
         this.isBlocked = AllRandomMethods.makeRandomBoolean();
         this.isConfirmed = AllRandomMethods.makeRandomBoolean();
         this.isSmsConfirmed = AllRandomMethods.makeRandomBoolean();
         this.isRemoved = AllRandomMethods.makeRandomBOOLEAN();
         this.created = AllRandomMethods.makeRandomDate();
-        this.updated=AllRandomMethods.makeRandomDate();
-        this.smsCode=AllRandomMethods.makeRandomString(8);
+        this.updated = AllRandomMethods.makeRandomDate();
+        this.smsCode = AllRandomMethods.makeRandomString(8);
         this.smsTryConfirmDate = AllRandomMethods.makeRandomDate();
         this.smsTryNumber = AllRandomMethods.makeRandomInt(4);
         this.isSubscribed = AllRandomMethods.makeRandomBoolean();
@@ -89,11 +89,11 @@ public class User {
     @Override
     public String toString() {
         String blocked = "";
-        if(isBlocked == true) {
+        if (isBlocked == true) {
             blocked = "заблокирован";
-        }else
+        } else
             blocked = "в порядке";
 
-        return "{{ "+" ID Пользователя: " +id + "|| Логин: "+ name+ "|| Пароль: "+ password+ " || Был создан: "+ created+"|| Статус блокировки " + blocked +" }}"+"\n";
+        return "{{ " + " ID Пользователя: " + id + "|| Логин: " + name + "|| Пароль: " + password + " || Был создан: " + created + "|| Статус блокировки " + blocked + " }}" + "\n";
     }
 }

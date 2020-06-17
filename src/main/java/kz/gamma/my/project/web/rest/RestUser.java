@@ -44,12 +44,7 @@ public class RestUser extends BaseRest {
         //User curUser = getUser();
         //List<Map<String, Object>> userDetails = userService.userDetails();
 
-        ThreadCreator threadCreator = new ThreadCreator("ThreadCreator");
-        threadCreator.start();
-
-
-
-                returnResponse(response, new DefaultResponse(RandomOrganizationCreator.randomCreate().toString()));      // {"data":"Hello, I\u0027m USER","timestamp":1591448151696}
+        returnResponse(response, new DefaultResponse(RandomOrganizationCreator.randomCreate().toString()));      // {"data":"Hello, I\u0027m USER","timestamp":1591448151696}
 
     }
 

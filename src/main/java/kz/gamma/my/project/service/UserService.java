@@ -3,6 +3,7 @@ package kz.gamma.my.project.service;
 import kz.gamma.my.project.model.User;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +25,8 @@ public class UserService extends AbstractService {
 
 
     public List<Map<String, Object>> userDetails() {
-            return db.queryForList("SELECT * FROM user_details WHERE TYPE = 'USER' AND caOrganizationId=?  ORDER BY created DESC");
+        return db.queryForList("SELECT * FROM user_details WHERE TYPE = 'USER' AND caOrganizationId=?  ORDER BY created DESC");
     }
-
 
 
 }
